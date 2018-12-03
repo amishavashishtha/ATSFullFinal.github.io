@@ -44,7 +44,7 @@
 			</div>
 			
 			<div class="container">
-				<form action="${pageContext.request.contextPath}/search_flights.do" method="post">
+				<form action="${pageContext.request.contextPath}/home.do" method="post">
 				
 					<div class="form-group row">
 					    <label for="username" class="offset-sm-1 col-sm-2 col-form-label">Username</label>

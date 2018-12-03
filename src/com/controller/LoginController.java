@@ -17,7 +17,7 @@ import com.dao.CustomerDAO;
 /**
 * Servlet implementation class LoginController
 */
-@WebServlet({"/search_flights.do", "/pages/search_flights.do"})
+@WebServlet({"/home.do", "/pages/search_flights.do"})
 public class LoginController extends HttpServlet {
                 private static final long serialVersionUID = 1L;
        
@@ -71,7 +71,7 @@ public class LoginController extends HttpServlet {
                                                 HttpSession session = request.getSession();
                                                 session.setAttribute("customer", c);
                                                 
-                                                RequestDispatcher rd=request.getRequestDispatcher("pages/search_flight.jsp");
+                                                RequestDispatcher rd=request.getRequestDispatcher("pages/home.jsp");
                                                 rd.include(request, response);
                                                 
                                 }

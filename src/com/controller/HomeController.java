@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 		description = "Description Here", 
 		urlPatterns = { 
 				"/HomeController", 
-				"/home.do"
+				"/pages/home.do"
 		})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,6 +35,8 @@ public class HomeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		System.out.println("Ekhane");
+		
 		RequestDispatcher rd = request.getRequestDispatcher("pages/home.jsp");
 		rd.forward(request, response);
 		
@@ -45,7 +47,12 @@ public class HomeController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		System.out.println("Na ekhane");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("pages/home.jsp");
+		rd.forward(request, response);
+		
 	}
 
 }

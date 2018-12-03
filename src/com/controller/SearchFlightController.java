@@ -22,7 +22,7 @@ import com.model.Location;
 /**
 * Servlet implementation class SearchFlightController
 */
-@WebServlet("/SearchFlightController")
+@WebServlet("/pages/SearchFlightController")
 public class SearchFlightController extends HttpServlet {
                 private static final long serialVersionUID = 1L;
        
@@ -89,7 +89,7 @@ public class SearchFlightController extends HttpServlet {
                                                 
                                                 request.setAttribute("flightList", flightList);
                                                 
-                                                RequestDispatcher rd = request.getRequestDispatcher("pages/search_results.jsp");
+                                                RequestDispatcher rd = request.getRequestDispatcher("search_results.jsp");
                                                 rd.forward(request, response);
                                                 
                                                 /*

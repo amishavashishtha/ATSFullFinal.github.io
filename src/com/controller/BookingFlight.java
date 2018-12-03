@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
 * Servlet implementation class BookingFlight
 */
-@WebServlet("/BookingFlight")
+@WebServlet("/pages/BookingFlight")
 public class BookingFlight extends HttpServlet {
     private static final long serialVersionUID = 1L;
        
@@ -67,7 +67,7 @@ public class BookingFlight extends HttpServlet {
             
             request.setAttribute("flightToBeBooked", flight);
             
-            RequestDispatcher rd = request.getRequestDispatcher("pages/proforma_invoice_screen.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("proforma_invoice_screen.jsp");
             rd.forward(request, response);
         }
                     
