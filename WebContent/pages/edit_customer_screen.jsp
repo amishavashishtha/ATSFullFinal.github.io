@@ -6,17 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Edit Customer</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
 <style type="text/css">
 
        body {
        
-              background: url("../images/airplane.jpg");
+              background: url("${pageContext.request.contextPath}/images/airplane.jpg");
               background-size: cover;
               background-repeat: no-repeat;
        
@@ -96,12 +96,18 @@
               
                      <h1 style="padding-top: 50px;">Edit Profile</h1>
                      
-                     <form onSubmit="return check()">                                          
+                     <div class="container">
+                          ${msg}
+                     </div>
+                     
+                     <form action="${pageContext.request.contextPath}/pages/EditCustomer" method="post">                                          
+                     
+                                                              
                      
                            <div class="form-row">
                                   <label for="customer_name" class="col-sm-2 col-xs-12 col-form-label">Customer Name</label>
                                   <div class="col-sm-4">
-                                         <input type="text" class="form-control" id="customer_name" value="${ sessionScope.customer.cName }" >
+                                         <input type="text" class="form-control" name="cName" id="customer_name" value="${ sessionScope.customer.cName }" >
                                   </div>
                                   
                            </div>
@@ -109,7 +115,7 @@
                            <div class="form-row">
                                   <label for="dob" class="col-sm-2 col-form-label">DOB</label>
                                   <div class="col-sm-4">
-                                         <input type="text" class="form-control" id="dob" value="10-JAN-1995" >
+                                         <input type="text" class="form-control" name="dob" id="dob" value="10-JAN-1995" >
                                   </div>
                                   
                            </div>
@@ -117,7 +123,7 @@
                            <div class="form-row">
                                   <label for="email" class="col-sm-2 col-form-label">Email</label>
                                   <div class="col-sm-4">
-                                         <input type="email" class="form-control" id="email" value="${ sessionScope.customer.email }" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                         <input type="email" class="form-control" id="email" name="email" value="${ sessionScope.customer.email }" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                                          title="email should be as per rule" >
                                   </div>
                                   
@@ -127,7 +133,7 @@
                            <div class="form-row">
                                   <label for="phoneno" class="col-sm-2 col-form-label">Phone number</label>
                                   <div class="col-sm-4">
-                                         <input type="number" class="form-control" id="phoneno" value="${ sessionScope.customer.phno }" maxlength="10"
+                                         <input type="number" class="form-control" id="phoneno" name="phno" value="${ sessionScope.customer.phno }" maxlength="10"
                                            title="must not exceed 10 values">
                                   </div>
                                   
@@ -136,7 +142,7 @@
                            <div class="form-row">
                                   <label for="address" class="col-sm-2 col-form-label">Address</label>
                                   <div class="col-sm-4">
-                                         <input type="text" class="form-control" id="address" maxlength="100" value="${ sessionScope.customer.address }"
+                                         <input type="text" class="form-control" id="address" name="address" maxlength="100" value="${ sessionScope.customer.address }"
                                            title="Address cannot be more than 100 characters " >
                                   </div>
                                   
@@ -145,7 +151,7 @@
                            <div class="form-row">
                                   <label for="gender" class="col-sm-2 col-form-label">Gender</label>
                                   <div class="col-sm-4">
-                                         <input type="text" class="form-control" id="gender" value="${ sessionScope.customer.gender }" >
+                                         <input type="text" class="form-control" id="gender" name="gender" value="${ sessionScope.customer.gender }" >
                                   </div>
                                   
                            </div>
@@ -153,20 +159,20 @@
                            <div class="form-row">
                                   <label for="ssn" class="col-sm-2 col-form-label">SSN_Number</label>
                                   <div class="col-sm-4">
-                                         <input type="text" class="form-control" id="ssn" value="${ sessionScope.customer.ssn.type }" >
+                                         <input type="text" class="form-control" id="ssn" name="ssnType" value="${ sessionScope.customer.ssn.type }" >
                                   </div>
                                   
                                   
                                   <div class="w-100"></div>
                                   
                                   <div class="offset-sm-2 col-sm-4">
-                                         <input type="text" class="form-control" id="ssn" value="${ sessionScope.customer.ssn.no }" >
+                                         <input type="text" class="form-control" id="ssn" name="ssnNumber" value="${ sessionScope.customer.ssn.no }" >
                                   </div>
                                   
                            </div>
                      
                            <div class="form-row">
-                                  <button class="btn btn-primary" type="submit" style="margin: 10px">Update</button>
+                                  <button class="btn btn-primary"  type="submit" style="margin: 10px">Update</button>
                                   <button class="btn btn-danger" type="reset" style="margin: 10px">Reset</button>
                            </div>
                      
@@ -176,22 +182,7 @@
        
        </div>
        
-       <script>
-           function check()
-           {
-              var psw1=document.getElementById("password").value;
-              var psw2=document.getElementById("confirm_password").value;
-              
-              console.log(psw1);
-              console.log(psw2);
-              
-              if(psw1 !=psw2)
-              {            	       
-                  document.getElementById("errmsg").innerHTML= "<font color=red>Passwords do not match!</font>";
-                  return false;
-              }
-           }
-       </script>
+       
 
 
 </body>

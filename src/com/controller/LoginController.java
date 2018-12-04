@@ -34,8 +34,8 @@ public class LoginController extends HttpServlet {
                 */
                 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
                                 // TODO Auto-generated method stub
-                	request.setAttribute("errmsg", "");
-                    RequestDispatcher rd=request.getRequestDispatcher("../login.jsp");
+                	request.setAttribute("errmsg", "<font color=red>Login to access the features</font>");
+                    RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
                     rd.include(request, response);
                 }
 
@@ -44,9 +44,23 @@ public class LoginController extends HttpServlet {
                 */
                 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
                                 // TODO Auto-generated method stub
-
-                                String username = request.getParameter("username");
-                                String password = request.getParameter("password");
+                				
+                    
+			                	 String username = null; 
+			                	 String password = null; 
+                	 
+                				try {
+                	
+	                                username = request.getParameter("username");
+	                                password = request.getParameter("password");
+                                
+                				} catch(Exception e) {
+                					
+                					request.setAttribute("errmsg", "<font color=red>Login to access the features</font>");
+                					RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
+                                    rd.include(request, response);
+                					
+                				}
                                 
                                 Customer c = null;
                                 

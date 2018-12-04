@@ -68,7 +68,7 @@
                         <a class="dropdown-item" href="edit_customer_screen.html">Edit Profile</a>
                         <a class="dropdown-item" href="cancel_booking.html">Cancel Bookings</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="logout.do">Logout</a>
                       </div>
               </div>
            </div>
@@ -120,6 +120,8 @@
                      Search Results
               </span>
               
+              <% int travellers = (Integer) request.getAttribute("no_of_travelers"); %>
+              
               <ul class="container list-group" style="margin-top: 50px; margin-bottom: 50px;">
               
                      <% 
@@ -155,7 +157,7 @@
                                   
                                          <div class="col">
                                                 
-                                                INR <%= flight.getFare() %>
+                                                INR <%= flight.getFare() * travellers %>
                                                 
                                          </div>
                                   

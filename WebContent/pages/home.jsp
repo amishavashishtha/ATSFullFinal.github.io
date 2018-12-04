@@ -62,10 +62,10 @@
 		    		
 	    		</div>
 	    		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-		          <a class="dropdown-item" href="edit_customer_screen.html">Edit Profile</a>
+		          <a class="dropdown-item" href="EditCustomer">Edit Profile</a>
 		          <a class="dropdown-item" href="pages/cancelBooking.do">Cancel Bookings</a>
 		          <div class="dropdown-divider"></div>
-		          <a class="dropdown-item" href="#">Logout</a>
+		          <a class="dropdown-item" href="logout.do">Logout</a>
 		        </div>
 	    	</div>
 	    </div>

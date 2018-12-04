@@ -216,6 +216,27 @@ public class CustomerDAO {
 		return exists;
      
     }
+    public void updateCustomerDetails(Customer customer) throws ClassNotFoundException, SQLException
+    {
+           SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+           Class.forName("com.mysql.jdbc.Driver");
+     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root","root");
+     Statement stmt=con.createStatement();
+     
+     try
+     {
+            String query="update customer_info set CName='"+customer.getcName()+"',Dob='"+sdf.format(customer.getDob())+"',Gender='"+customer.getGender()+"',Address='"+customer.getAddress()+"',Phno='"+customer.getPhno()+"',Email='"+customer.getEmail()+"',Password='"+customer.getPassword()+"',Ssn_type='"+customer.getSsn().getType()+"' where Cid="+customer.getcId();
+            System.out.println(query);
+            int rs=stmt.executeUpdate(query);
+      
+     
+     }
+     catch(Exception ex)
+     {
+     System.out.println(ex);
+     }
+    }
+
     
    }
 

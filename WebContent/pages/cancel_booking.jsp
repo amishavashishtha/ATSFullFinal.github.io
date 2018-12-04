@@ -47,7 +47,7 @@
 	        <a class="nav-link" href="search_flight.html">Search Flights</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link active" href="#">Cancel Booking</a>
+	        <a class="nav-link active" href="cancel.do">Cancel Booking</a>
 	      </li>
 	      <!-- 
 		      <li class="nav-item">
@@ -69,7 +69,7 @@
 		          <a class="dropdown-item" href="edit_customer_screen.html">Edit Profile</a>
 		          <a class="dropdown-item" href="#">Cancel Bookings</a>
 		          <div class="dropdown-divider"></div>
-		          <a class="dropdown-item" href="#">Logout</a>
+		          <a class="dropdown-item" href="logout.do">Logout</a>
 		        </div>
 	    	</div>
 	    </div>
@@ -85,13 +85,17 @@
 				<h1>Cancel Booking</h1>
 			</div>
 			
+			<div class="container">
+				${errmsg}
+			</div>
+			
 			<div class="container" style="margin-top: 30px;"> 
 				<form action="cancelBooking.do" method="post">			
 				
 					<div class="form-row">
 						<label for="booking id" class="col-sm-2 col-form-label">Booking ID</label>
 						<div class="col-sm-6">
-							<input type="text" list="booking_id_list" name="bookingId" />
+							<input type="text" list="booking_id_list" name="bookingId" autocomplete="false" />
 	
 							<% List<Booking> bookingList = (List<Booking>) request.getAttribute("bookingList"); %>							
 	

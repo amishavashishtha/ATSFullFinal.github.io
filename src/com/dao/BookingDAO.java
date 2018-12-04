@@ -41,13 +41,14 @@ public class BookingDAO {
 	{
 
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Class.forName("com.mysql.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ars","root","root");
         Statement stmt=con.createStatement();
        
         try
         {
-	        String query="insert into booking_info values('"+booking.getBookingId()+"','"+sdf.format(booking.getBookingDt())+"','"+booking.getfNo()+"','"+booking.getcId().getcId() +"','"+booking.getPrice()+"'," + booking.getSeatsBooked() + ",'"+sdf.format(booking.getDOJ())+"')";
+	        String query="insert into booking_info values('"+booking.getBookingId()+"','"+sdf.format(booking.getBookingDt())+"','"+booking.getfNo()+"','"+booking.getcId().getcId() +"','"+booking.getPrice()+"'," + booking.getSeatsBooked() + ",'"+sdf1.format(booking.getDOJ())+"')";
 	        System.out.println(query);
 	        int rs=stmt.executeUpdate(query);	     	      
 	        
@@ -91,7 +92,7 @@ public class BookingDAO {
 			Customer customer = new CustomerDAO().getUserById(cId);
 			Integer price=rs.getInt(5);
 			Integer seatsBooked = rs.getInt(6);
-			Date doj = rs.getDate(7);	
+			Date doj = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString(7));	
 			
 			System.out.println(bookingId);
 			System.out.println(bookingDt);

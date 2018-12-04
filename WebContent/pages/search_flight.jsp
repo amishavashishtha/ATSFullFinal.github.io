@@ -33,7 +33,7 @@
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
            <ul class="navbar-nav mr-auto">
              <li class="nav-item">
-               <a class="nav-link active" href="#">Home</a>
+               <a class="nav-link active" href="pages/home.jsp">Home</a>
              </li>
              <li class="nav-item">
                <a class="nav-link" href="#">Search Flights</a>
@@ -62,7 +62,7 @@
                         <a class="dropdown-item" href="pages/edit_customer_screen.jsp">Edit Profile</a>
                         <a class="dropdown-item" href="cancel_booking.html">Cancel Bookings</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="logout.do">Logout</a>
                       </div>
               </div>
            </div>

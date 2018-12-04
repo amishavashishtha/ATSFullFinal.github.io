@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dao.FlightDAO;
 import com.dao.LocationDAO;
+import com.dao.SeatsAvailableDAO;
 import com.model.Flight;
 import com.model.Location;
 
@@ -44,7 +46,7 @@ public class SearchFlightController extends HttpServlet {
                                 String src = request.getParameter("src");
                                 String dest = request.getParameter("dest");
                                 String dateTime = request.getParameter("departure_timestamp");
-                                String no_of_travelers = request.getParameter("no_of_travelers");
+                                Integer no_of_travelers = Integer.parseInt(request.getParameter("no_of_travelers"));
                                 
                                 System.out.println(src);
                                 System.out.println(dest);
@@ -87,7 +89,28 @@ public class SearchFlightController extends HttpServlet {
                                 try {
                                                 List<Flight> flightList = new FlightDAO().getFlight(locationSrc.getLocationId(), locationDest.getLocationId(), dt);
                                                 
+                                                List<Flight> tempList = new ArrayList<>();
+                                                
+                                                for (Flight flight : flightList) {
+                                                	int seatsAvailable = 0;
+													try {
+														seatsAvailable = new SeatsAvailableDAO().getTotalSeats(flight.getfNo()).getAvaSeats();
+													} catch (ParseException e) {
+														// TODO Auto-generated catch block
+														e.printStackTrace();
+													}
+													if(seatsAvailable < no_of_travelers) {
+														
+														tempList.add(flight);
+														
+													}
+												}
+                                                
+                                                flightList.removeAll(tempList);
+                                                
                                                 request.setAttribute("flightList", flightList);
+                                                
+                                                request.setAttribute("no_of_travelers", no_of_travelers);
                                                 
                                                 RequestDispatcher rd = request.getRequestDispatcher("search_results.jsp");
                                                 rd.forward(request, response);

@@ -96,7 +96,7 @@
                         <a class="dropdown-item" href="edit_customer_screen.html">Edit Profile</a>
                         <a class="dropdown-item" href="cancel_booking.html">Cancel Bookings</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="logout.do">Logout</a>
                       </div>
               </div>
            </div>
