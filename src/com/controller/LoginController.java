@@ -34,9 +34,23 @@ public class LoginController extends HttpServlet {
                 */
                 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
                                 // TODO Auto-generated method stub
-                	request.setAttribute("errmsg", "<font color=red>Login to access the features</font>");
-                    RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
-                    rd.include(request, response);
+                	
+                		
+            		Customer customer = (Customer) request.getSession().getAttribute("customer");
+                		
+                	if(customer == null) {
+                	
+	                	request.setAttribute("errmsg", "<font color=red>Login to access the features</font>");
+	                    RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
+	                    rd.include(request, response);
+                    
+                	}
+                	else {
+                		
+                		RequestDispatcher rd=request.getRequestDispatcher("pages/home.jsp");
+                        rd.include(request, response);
+                		
+                	}
                 }
 
                 /**
@@ -54,7 +68,7 @@ public class LoginController extends HttpServlet {
 	                                username = request.getParameter("username");
 	                                password = request.getParameter("password");
                                 
-                				} catch(Exception e) {
+                				} catch(Exception e) {                					                			
                 					
                 					request.setAttribute("errmsg", "<font color=red>Login to access the features</font>");
                 					RequestDispatcher rd=request.getRequestDispatcher("login.jsp");

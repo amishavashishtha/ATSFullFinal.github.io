@@ -43,19 +43,24 @@ public class BookingFlight extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub                   
         
-        Enumeration<String> params = request.getParameterNames();
-        if(params.hasMoreElements())
-        {
-            String p = params.nextElement();
-            String fNo = request.getParameter(p);                       
+    	
+        //Enumeration<String> params = request.getParameterNames();
+        //if(params.hasMoreElements())
+        //{
+        //    String p = params.nextElement();
+        //    String fNo = request.getParameter(p);                       
             
+    		String fNo = request.getParameter("fid");
+    	
+    		Integer no_of_travellers = Integer.parseInt(request.getParameter("not"));
+    		
             Flight flight = null;
             try {
                 try {
-                                flight = new FlightDAO().getFlightById(fNo);
+                    flight = new FlightDAO().getFlightById(fNo);
                 } catch (ParseException e) {
-                                // TODO Auto-generated catch block
-                                e.printStackTrace();
+                	// TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
             } catch (ClassNotFoundException e) {
                 // TODO Auto-generated catch block
@@ -64,12 +69,15 @@ public class BookingFlight extends HttpServlet {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            
+  
+    	
             request.setAttribute("flightToBeBooked", flight);
+            request.setAttribute("no_of_travellers", no_of_travellers);
             
             RequestDispatcher rd = request.getRequestDispatcher("proforma_invoice_screen.jsp");
             rd.forward(request, response);
-        }
+
+        //}
                     
     }
 

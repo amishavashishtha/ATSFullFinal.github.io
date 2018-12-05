@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="com.model.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,9 +45,11 @@
 </head>
 <body>
 
+       <% Customer customer = (Customer) session.getAttribute("customer"); %>
+
        <!--  Navbar -->
        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-         <a class="navbar-brand" href="search_flight.html">FlyEasy!</a>
+         <a class="navbar-brand" href="${pageContext.request.contextPath}/home.do">FlyEasy!</a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
          </button>
@@ -55,13 +57,13 @@
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
            <ul class="navbar-nav mr-auto">
              <li class="nav-item">
-               <a class="nav-link" href="search_flight.html">Home</a>
+               <a class="nav-link active" href="${pageContext.request.contextPath}/home.do">Home</a>
              </li>
              <li class="nav-item">
-               <a class="nav-link" href="search_flight.html">Search Flights</a>
+               <a class="nav-link" href="${pageContext.request.contextPath}/pages/search_flight.jsp">Search Flights</a>
              </li>
              <li class="nav-item">
-               <a class="nav-link" href="cancel_booking.html">Cancel Booking</a>
+               <a class="nav-link" href="${pageContext.request.contextPath}/pages/cancelBooking.do">Cancel Booking</a>
              </li>
              <!-- 
                     <li class="nav-item">
@@ -76,14 +78,15 @@
                             <span style="border: 1px solid white; border-radius: 100%; margin-right: 10px; text-align: center">
                                   <span class="fa fa-user" style="padding-left: 10px; padding-right: 5px;"></span>
                             </span>
-                            
+                                                
+                            <%= customer.getcName().split(" ")[0] %>
                             
                      </div>
                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Edit Profile</a>
-                        <a class="dropdown-item" href="cancel_booking.html">Cancel Bookings</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/pages/cancelBooking.do">Cancel Bookings</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/logout.do">Logout</a>
                       </div>
               </div>
            </div>

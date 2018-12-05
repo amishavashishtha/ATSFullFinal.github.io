@@ -52,6 +52,9 @@ public class ATSFilter implements Filter {
         
         System.out.println("Path: " + path);
         
+        if(path.equals("/home.do")) {
+        	System.out.println("Carry you home!");
+        }        
         
         if(obj==null && !(path.equals("") || path.equals("/home.do") || path.equals("/pages/new_registration.jsp")))
         {

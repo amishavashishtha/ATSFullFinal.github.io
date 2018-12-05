@@ -48,9 +48,11 @@ public class SeatsAvailableDAO {
              
                  try
                   {
-                     String query="update seats_available set AVA_SEATS="+(f.getTotSeats()-b.getSeatsBooked());
+                	 int currentAvailable = getTotalSeats(f.getfNo()).getAvaSeats();
+                     String query="update seats_available set AVA_SEATS = " +(currentAvailable-b.getSeatsBooked()) + " where f_no = '" + f.getfNo() + "' and dept_date = '" + sdf.format(b.getDOJ()) +"'" ;
+                     System.out.println(query);
                      
-                  int rs=stmt.executeUpdate(query);
+                     int rs=stmt.executeUpdate(query);
                  }
                   catch(Exception ex)
                   {

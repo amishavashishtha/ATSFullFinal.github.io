@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dao.BookingDAO;
 import com.dao.FlightDAO;
+import com.dao.SeatsAvailableDAO;
 
 /**
  * Servlet implementation class ConfirmBooking
@@ -54,6 +55,10 @@ public class ConfirmBooking extends HttpServlet {
 		
 		System.out.println(fNo);
 		
+		int no_of_travellers = Integer.parseInt(request.getParameter("no_of_passengers"));
+		
+		System.out.println(no_of_travellers);
+		
 		Flight flight = null;
 		
 		try {
@@ -83,8 +88,20 @@ public class ConfirmBooking extends HttpServlet {
 			e1.printStackTrace();
 		}
 		
-		Booking booking = new Booking(bookingId, new Date(), fNo, customer, flight.getFare(), 1, flight.getDepartTime());
+		Booking booking = new Booking(bookingId, new Date(), fNo, customer, flight.getFare() * no_of_travellers, no_of_travellers, flight.getDepartTime());
 	
+		try {
+			new SeatsAvailableDAO().updateSeatAvailable(new FlightDAO().getFlightById(fNo), booking);
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		try {
 			new BookingDAO().createNewBooking(booking);

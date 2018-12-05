@@ -39,10 +39,10 @@
 	        <a class="nav-link active" href="#">Home</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="pages/search_flight.jsp">Search Flights</a>
+	        <a class="nav-link" href="${pageContext.request.contextPath}/pages/search_flight.jsp">Search Flights</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="pages/cancelBooking.do">Cancel Booking</a>
+	        <a class="nav-link" href="${pageContext.request.contextPath}/pages/cancelBooking.do">Cancel Booking</a>
 	      </li>
 	      <!-- 
 		      <li class="nav-item">
@@ -62,10 +62,10 @@
 		    		
 	    		</div>
 	    		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-		          <a class="dropdown-item" href="EditCustomer">Edit Profile</a>
-		          <a class="dropdown-item" href="pages/cancelBooking.do">Cancel Bookings</a>
+		          <a class="dropdown-item" href="${pageContext.request.contextPath}/EditCustomer">Edit Profile</a>
+		          <a class="dropdown-item" href="${pageContext.request.contextPath}/pages/cancelBooking.do">Cancel Bookings</a>
 		          <div class="dropdown-divider"></div>
-		          <a class="dropdown-item" href="logout.do">Logout</a>
+		          <a class="dropdown-item" href="${pageContext.request.contextPath}/logout.do">Logout</a>
 		        </div>
 	    	</div>
 	    </div>
@@ -84,7 +84,7 @@
 			  <p class="lead">Now experience completely seamless and hassle free flight booking with FlyEasy!</p>
 			  <hr class="my-4" style="border-color: white; background-color: white; color: white">
 			  <p>Lets find the best flight to your next destination.</p>
-			  <a class="btn btn-light btn-lg" href="pages/search_flight.jsp" role="button">Search Flights</a>
+			  <a class="btn btn-light btn-lg" href="${pageContext.request.contextPath}/pages/search_flight.jsp" role="button">Search Flights</a>
 			</div>
 			
 		</div>
