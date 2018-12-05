@@ -53,6 +53,8 @@ public class SearchFlightController extends HttpServlet {
                     System.out.println(dateTime);
                     System.out.println(no_of_travelers);
                     
+                    request.setAttribute("departure_timestamp", dateTime);
+                    
                     SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                     
                     SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -110,6 +112,8 @@ public class SearchFlightController extends HttpServlet {
                         
                         request.setAttribute("flightList", flightList);
                         
+                        request.setAttribute("src", src);
+                        request.setAttribute("dest", dest);                        
                         request.setAttribute("no_of_travelers", no_of_travelers);
                         
                         RequestDispatcher rd = request.getRequestDispatcher("search_results.jsp");

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="com.model.*" %>
+    pageEncoding="ISO-8859-1" import="com.model.*, java.util.*, java.text.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -104,7 +104,7 @@
                            
                                   <div class="col-sm-6">
                                          <label>Departure DateTime</label>
-                                         <input class="form-control" name="departure_timestamp" type="datetime-local" id="datefield"/>
+                                         <input class="form-control" name="departure_timestamp" type="datetime-local" id="datefield" min="<%= new SimpleDateFormat("yyyy-MM-dd").format(new Date()) %>"/>
                                   </div>
                                   
                                   <div class="col-sm-3">

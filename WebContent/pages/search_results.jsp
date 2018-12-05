@@ -85,28 +85,28 @@
               
                      <div class="col parameters">
                            <label>Departing From</label>
-                           <input type="text" class="form-control" placeholder="Departing From" />
+                           <input type="text" class="form-control" placeholder="Departing From" value="<%= request.getAttribute("src") %>" />
                      
                      </div>
                      
                      <div class="col parameters">
                      
                            <label>Arriving To</label>
-                           <input type="text" class="form-control" placeholder="Arriving To"/>
+                           <input type="text" class="form-control" placeholder="Arriving To" value="<%= request.getAttribute("dest") %>" />
                      
                      </div>
                      
                      <div class="col parameters">
                      
                            <label>Departure DateTime</label>
-                           <input class="form-control" type="datetime-local" id="datefield"/>
+                           <input class="form-control" type="datetime-local" id="datefield" value="<%= request.getAttribute("departure_timestamp") %>" min="<%= new SimpleDateFormat("yyyy-MM-dd").format(new Date()) %>" />
                      
                      </div>
                      
                      <div class="col parameters">
                      
                            <label>Travelers</label>
-                           <input class="form-control" type="number" min="1" max="20" value="1"/>
+                           <input class="form-control" type="number" min="1" max="20" value="<%= request.getAttribute("no_of_travelers") %>"/>
                      
                      </div>
                      
